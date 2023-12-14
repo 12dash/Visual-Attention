@@ -30,7 +30,7 @@ For all the models, the following architecture parameter was follows :
 * Linear Projection dim : 512
 
 ### MNIST
-For MNIST dataset, I trained it for only 5 epochs since the loss and accuracy had already reached quite a good value. 
+For MNIST dataset, I trained it for only 5 epochs since the loss and accuracy had already reached quite a good value.  
 <img src="result/mnist/predictions.png" width=30% height=30%>
 
 ### CIfar-10
