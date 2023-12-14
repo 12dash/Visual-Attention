@@ -9,6 +9,7 @@ class Mnist(Dataset):
         self.img_gzip_path = base_dir + img_gzip
         self.label_gzip_path = base_dir + label_gzip
         self.imgs, self.labels = None, None
+        self.label_name = None
         self.load()
         
     def load(self):

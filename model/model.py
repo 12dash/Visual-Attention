@@ -5,7 +5,7 @@ class PatchEmbedding(nn.Module):
     def __init__(self, input_channel, patch_size, embedding_dim, 
                        num_patch):
         super().__init__()
-        self.patch_layer = nn.Conv2d(input_channel, embedding_dim, 
+        self.patch_layer = nn.Conv2d(in_channels = input_channel, out_channels = embedding_dim, 
                                      kernel_size = patch_size, 
                                      stride = patch_size)
         
@@ -24,6 +24,7 @@ class PatchEmbedding(nn.Module):
         x = torch.cat([class_token, x], dim = -1) # batch_size x embedding_dim x (height x width + 1)
         x  = x + self.positional_embedding
         x = torch.transpose(x, -2, -1) #batch_size x (height x width + 1)x embedding_dim
+
         return x
 
 class TransformerEncoder(nn.Module):
@@ -62,18 +63,18 @@ class AttentionModel(nn.Module):
     def __init__(self, patch_size, 
                  output_dim, NUM_PATCH,
                  L = 2, input_channel = 1, 
-                 embedding_dim = 16, num_heads = 2):
+                 embedding_dim = 16, projection_dim = 128, num_heads = 2):
         """
         Forms the entire Visual Transformer model. 
         """
         super().__init__()
         self.patch_embedding = PatchEmbedding(input_channel, 
                                               patch_size, embedding_dim, 
-                                              NUM_PATCH)
+                                            NUM_PATCH)
 
         # Mutliple layers of the transformer encoder is stacked on top of another.
-        self.transformer_encoder = nn.Sequential(*[TransformerEncoder(embedding_dim, 
-                                                                      projection_dim = embedding_dim,
+        self.transformer_encoder = nn.Sequential(*[TransformerEncoder(embedding_dim = embedding_dim,  
+                                                                      projection_dim = projection_dim,
                                                                       num_heads = num_heads) for _ in range(L)])
 
         # The last layer takes the class token and gives the probability over the classes
