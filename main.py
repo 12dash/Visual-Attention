@@ -6,9 +6,9 @@ import torch
 from torch.utils.data import DataLoader
 
 from model.model import AttentionModel
-from dataloaders.MnistDataset import Mnist
-from dataloaders.CifarDataset import Cifar
-from dataloaders.Cifar100Dataset import Cifar100
+from datasets.MnistDataset import Mnist
+from datasets.CifarDataset import Cifar
+from datasets.Cifar100Dataset import Cifar100
 from utils import plot_loss, build_dir, plot_imgs, log_metrics
 
 
