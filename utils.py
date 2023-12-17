@@ -7,7 +7,7 @@ def build_dir(save_dir):
         os.makedirs(save_dir)
 
 def plot_loss(history, save_dir):
-    fig = plt.figure(figsize=(10,3))
+    fig = plt.figure(figsize=(6,4))
     fig = plt.plot(history['train_loss'], label = 'Train Loss')
     fig = plt.plot(history['val_loss'], label = 'Val Loss')
     _ = plt.legend()

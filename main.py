@@ -179,13 +179,13 @@ if __name__ == "__main__":
     DEVICE = torch.device('mps') if torch.backends.mps.is_available() else torch.device('cpu')
     DEVICE = torch.device('cuda') if torch.cuda.is_available() else DEVICE
 
-    train_dataloader, val_dataloader, test_dataloader, label_name = load_mnist_dataset()
+    train_dataloader, val_dataloader, test_dataloader, label_name = load_cifar100_dataset()
     build_dir(save_dir=SAVE_DIR)
 
     model = AttentionModel(patch_size = PATCH_SIZE, 
                            output_dim = OUTPUT_DIM, 
                            L=12, num_heads=8,
-                           embedding_dim = 256,
+                           embedding_dim = 512,
                            projection_dim = 512,
                            input_channel = INPUT_CHANNEL,
                            NUM_PATCH = NUM_PATCH).to(DEVICE)
@@ -194,7 +194,7 @@ if __name__ == "__main__":
     loss_fn = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr = 1e-4)
 
-    epochs = 5
+    epochs = 50
 
     history = {'train_loss':[],  'val_loss':[], 'train_acc':[], 'val_acc' : []}
     for epoch in tqdm(range(epochs)):

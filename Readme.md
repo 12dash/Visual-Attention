@@ -51,12 +51,12 @@ For MNIST dataset, I trained it for only 5 epochs since the loss and accuracy ha
 <img src="result/mnist/predictions.png" width=30% height=30%>  <img src="result/mnist/loss_curve.png" width=30% height=30%> 
 
 ### Cifar-10
-The data was split into train, test and val. Result for training on 25 epochs. 
+The data was split into train, test and val. Result for training on 50 epochs. 
 | Dataset | Loss |  Accuracy |
 | -------------  |-------------  | ------------- |
-| Train	| 1.08 | 0.62 | 
-| Val	| 1.02 | 0.65 |
-| Test  | 1 | 0.65 |
+| Train	| 0.83 | 0.71 | 
+| Val	| 0.85 | 0.69 |
+| Test  | 0.93 | 0.69 |
 
 <img src="result/cifar-10/predictions.png" width=30% height=30%> <img src="result/cifar-10/loss_curve.png" width=30% height=30%> 
 
